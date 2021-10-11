@@ -361,3 +361,6 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+/Physics/Lib/site-packages
+/Physics/Scripts
+/Physics/pyvenv.cfg
