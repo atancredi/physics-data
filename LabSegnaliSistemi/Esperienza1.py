@@ -28,4 +28,4 @@ def PassaAlto_Misure():
     freq = np.array([1,5.07,20,40,60,80,100,200,500,1000,71.7]) #kHz
     delta_phi = 2*np.pi*freq*delta_t
 
-PassaAlto()
+PassaAlto_Trasferimento()
