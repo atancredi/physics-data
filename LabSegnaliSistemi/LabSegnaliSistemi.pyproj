@@ -25,6 +25,7 @@
     <Compile Include="Esperienza1.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="ProgrammaGrafici.py" />
   </ItemGroup>
   <ItemGroup>
     <InterpreterReference Include="Global|VisualStudio|Laboratori di Fisica" />
