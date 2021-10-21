@@ -1,0 +1,6 @@
+integrazione equazione dell'oscillatore armonico con il metodo di Eulero
+
+lab 9.1, lab 9.2
+
+devo avere in input x0, v0, m, omega, delta t, tmax
+devo restituire: #1:t 2:x 3:v

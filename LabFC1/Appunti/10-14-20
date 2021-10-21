@@ -1,0 +1,32 @@
+Elementi di C:
+
+malloc:
+riservare dinamicamente la memoria
+void *malloc(size_t n) //controllare bene sintassi esatta del prototipo
+restituisce un puntatore di tipo void a n byte di spazio non inizializzato
+
+es:
+	float *xF;
+	xF = (float, *) malloc(variabile *sizeof(float));
+	xF[38] //uso il puntatore
+	if(xF == NULL){
+	      //malloc fallita
+	      exit(-1); //error code arbitrario, int status: ritorna lo status al parent terminato il programma
+	}
+
+sizeof: operatore unitario
+restituisce la dimensione di un oggetto o tipo in byte
+
+calloc:
+inizializza a zero tutti i byte che riserva
+prototipo: void *calloc(size_t n, size_t size) n=n. of words, size=taglia di ognuna delle words
+
+realloc:liberare la memoria allocata dinamicamente
+
+free:
+
+system:
+prototipo: int system(char *s);
+definito in <stdlib.h>
+restituisce il return dell'esecuzione del comando, 127 se fallisce la chiamata a execve per "bin/sh" o per "bin/bash", -1 per qualsiasi altro errore
+agisce coi privilegi di chi esegue il programma
