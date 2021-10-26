@@ -7,6 +7,15 @@
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
+        //Find the lenght of an ARRAY
+        function lenght(array) {
+            var len = 0;
+            array.forEach(function (item) {
+                len++;
+            })
+            return len
+        }
+
         //Format a string
         function format(stringa, array_parametri) {
             var counter = 0;
@@ -52,8 +61,12 @@
 
         function DataSubmit(){
 
-            //get the data
-            var rows = $("DataRows")
+            //get the rows
+            var rows = $(".DataRows");
+            console.log(rows.size(),nFields);
+            for (var i = 0; i < lenght(rows); i++) {
+
+            }
 
         }
 
