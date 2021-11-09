@@ -9,6 +9,8 @@ Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "Data", "Data\Data.pyproj", 
 EndProject
 Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "Visual", "Visual\Visual.pyproj", "{DE79906C-0D2F-42F6-B658-513BDF45E1EA}"
 EndProject
+Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "Oscilloscope", "Oscilloscope\Oscilloscope.pyproj", "{6B98F3DB-7D91-4D64-9E45-226F10BD754C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,8 @@ Global
 		{7324D944-7696-4634-99CE-91812978271D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DE79906C-0D2F-42F6-B658-513BDF45E1EA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{DE79906C-0D2F-42F6-B658-513BDF45E1EA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6B98F3DB-7D91-4D64-9E45-226F10BD754C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6B98F3DB-7D91-4D64-9E45-226F10BD754C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
