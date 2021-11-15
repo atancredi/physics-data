@@ -4,14 +4,14 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>df5b5110-5ad8-49e9-bd5a-654fa7f2b9a2</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>Esperienza1.py</StartupFile>
+    <StartupFile>ProgrammaGrafici.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
     <OutputPath>.</OutputPath>
     <Name>LabSegnaliSistemi</Name>
     <RootNamespace>LabSegnaliSistemi</RootNamespace>
-    <InterpreterId>MSBuild|Physics|C:\Users\aless\source\repos\physics_labs\Data\Data.pyproj</InterpreterId>
+    <InterpreterId>Global|VisualStudio|Physics (Python 3.7 (64-bit))</InterpreterId>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
     <DebugSymbols>true</DebugSymbols>
@@ -28,7 +28,7 @@
     <Compile Include="ProgrammaGrafici.py" />
   </ItemGroup>
   <ItemGroup>
-    <InterpreterReference Include="MSBuild|Physics|C:\Users\aless\source\repos\physics_labs\Data\Data.pyproj" />
+    <InterpreterReference Include="Global|VisualStudio|Physics (Python 3.7 (64-bit))" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
   <!-- Uncomment the CoreCompile target to enable the Build command in

@@ -85,7 +85,7 @@ def bode_diagram(v_in,v_out,delta_t,freq):
         #traslate the data
         DataTraslator(data)
 
-        df = pd.DataFrame(np.array(finaldata),
+        df = pd.DataFrame(np.array(DataTraslator(data)),
                             columns=[freq[1],v_in[1],v_out[1],"|T(\u03C9)|",delta_t[1],"\u0394\u03C6"])
         return df.sort_values(by=[freq[1]])
 
@@ -121,9 +121,9 @@ V_r = np.array([0.12,5.73,31.5,79.4,147.3,225,304.5,181.6,2.2,9.7,0,0,0,0,0])*(1
 
 bode_results = bode_diagram(v_in,v_out,delta_t,freq)
 
-print(bode_results.to_latex(index=False))
+#print(bode_results.to_latex(index=False))
 
-diode(V_r,V_D,R_d)
+#diode(V_r,V_D,R_d)
 
 plt.show()
 
