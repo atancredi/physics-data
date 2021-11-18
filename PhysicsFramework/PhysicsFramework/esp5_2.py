@@ -48,67 +48,12 @@ dataSet2 = LabSS.dataSet(freq2, vin2, vout2, deltat2)
 print(LabSS.calc_dataSet(dataSet1))
 print(LabSS.calc_dataSet(dataSet2))
 
-LabSS.PlotBode(dataSet1)
+#LabSS.PlotBode(dataSet1)
+LabSS.BodeCompare([dataSet1,dataSet2])
 
 #
 #   Fine Presa Dati
 #
-    
-def doublebode(vout1, vin1, freq1, deltat1, vout2, vin2, freq2, deltat2):
-    fig = plt.figure(LabSS.CreateFigure())
-    ax1 = fig.add_subplot()
-    
-    module1, sigma_module1, delta_phi1, sigma_deltaphi1 = printGraph(vout1, vin1, freq1, deltat1, "nograph")
-    module2, sigma_module2, delta_phi2, sigma_deltaphi2 = printGraph(vout2, vin2, freq2, deltat2, "nograph")
-    
-    #definisco una funzione di linearità
-    def func(x, m, c):
-        return m*x+c
-    
-    #faccio il fit lineare per 1
-    #print(len(freq1[0]))
-    #print(len(module1))
-    #print(len(sigma_module1))
-    param_L,cov_L=curve_fit(func,freq1[0],module1,sigma=sigma_module1)
-    m_L=param_L[0]
-    sigma_m_L=cov_L[0,0]
-    c_L=param_L[1]
-    sigma_c=cov_L[1,1]
-    x_fit_L=np.linspace(freq1[0].min(),freq1[0].max(),100)
-    y_fit_L=func(x_fit_L,m_L,c_L)
-    plt.plot(x_fit_L,20*np.log10(y_fit_L),color="purple",label="fit")
-    
-    plt.xscale("log")
-    ax1.scatter(freq1[0]*10**3,20*np.log(module1), marker="o",label="Dati per K=2.5")
-    ax1.scatter(freq2[0]*10**3,20*np.log(module2), marker="o", color="blue", label="Dati per K circa 1.6")
-    plt.axhline(-3, color="red", label="-3dB")
-    plt.axvline(1008.88, label="$\\nu_C$ teorica", color="green")
-    plt.legend()
-    plt.xlabel("$\\nu$ (Hz)")
-    plt.ylabel("Attenuazione (dB)")
-    plt.grid()
-    plt.title("Diagramma di Bode, Funzione di trasferimento")
-    
-def doublephase(vout1, vin1, freq1, deltat1, vout2, vin2, freq2, deltat2):
-    fig = plt.figure(LabSS.CreateFigure())
-    ax1 = fig.add_subplot()
-    
-    freq_act1 = freq1[0]*10**3
-    freq_act2 = freq2[0]*10**3
-    deltat_act1 = deltat1[0]*(10**-6)  #us
-    deltat_act2 = deltat2[0]*(10**-6)  #us
-    delta_phi1 = ((2*np.pi*freq_act1*deltat_act1)*(180/np.pi))
-    delta_phi2 = ((2*np.pi*freq_act2*deltat_act2)*(180/np.pi))
-    plt.xscale("log")
-    ax1.scatter(freq_act1, delta_phi1, label="Dati per K=2.5")
-    ax1.scatter(freq_act2, delta_phi2,  marker="o", color="blue", label="Dati per K circa 1.6")
-    plt.xlabel("$\\nu$ (Hz)")
-    plt.grid()
-    plt.axhline(-45, label="- 45°", color="red")
-    plt.axvline(1008.88, label="$\\nu_C$ teorica", color="green")
-    plt.ylabel("Sfasamento (Deg)")
-    plt.legend()
-    plt.title("Diagramma di Bode, fase")
 
 def dataFrame(freq,v_in,v_out,delta_t):
     
@@ -240,7 +185,6 @@ def dataFrame(freq,v_in,v_out,delta_t):
         df2 = pd.DataFrame(DataTraslator(datafinale), columns=colheads)
         
         return df2
-
 
 #df1 = dataFrame(freq1,vin1,vout1,deltat1)
 #print(df1.to_latex(index=False).replace("rrrrrr","|c|c|c|c|c|c|").replace("@@@","\pm").replace("§§§","$"))

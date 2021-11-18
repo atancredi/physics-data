@@ -129,6 +129,47 @@ def PlotBode(dataSet):
 
     plt.show()
 
+#Compare the bode diagrams for 2 dataSets
+def BodeCompare(dataSets):
+
+    freq1, vin1, vout1, deltat1 = unpack_dataSet(dataSets[0], "values", "raw")
+    module1, deltaphi1 = unpack_dataSet(dataSets[0], "values", "calculated")
+
+    freq2, vin2, vout2, deltat2 = unpack_dataSet(dataSets[1], "values", "raw")
+    module2, deltaphi2 = unpack_dataSet(dataSets[1], "values", "calculated")
+
+    fig = plt.figure(CreateFigure())
+    ax1 = fig.add_subplot()
+    plt.xscale("log")
+    plt.axhline(-3, color="red", label="-3dB")
+    plt.axvline(1008.88, label="$\\nu_C$ teorica", color="green")
+    plt.legend()
+    plt.xlabel("$\\nu$ (Hz)")
+    plt.ylabel("Attenuazione (dB)")
+    plt.grid()
+    plt.title("Diagramma di Bode, Funzione di trasferimento")
+    ax1.scatter(freq1,20*np.log(module1), marker="o",label="Dati per K=2.5")
+    ax1.scatter(freq2,20*np.log(module2), marker="o", color="blue", label="Dati per K circa 1.6")
+
+
+    fig = plt.figure(CreateFigure())
+    ax2 = fig.add_subplot()
+    plt.xscale("log")
+    plt.xlabel("$\\nu$ (Hz)")
+    plt.grid()
+    plt.axhline(-45, label="- 45°", color="red")
+    plt.axvline(1008.88, label="$\\nu_C$ teorica", color="green")
+    plt.ylabel("Sfasamento (Deg)")
+    plt.legend()
+    plt.title("Diagramma di Bode, fase")
+    ax2.scatter(freq1, deltaphi1, label="Dati per K=2.5")
+    ax2.scatter(freq2, deltaphi2,  marker="o", color="blue", label="Dati per K circa 1.6")
+
+    plt.show()
+
+#Export the latex table of all the data passing through a Pandas dataFrame
+
+
 ##########################################################
 #Useful functions for plotting with matplotlib
 def CreateFigure():
