@@ -44,25 +44,26 @@ def dataSet(freq, vin, vout, deltat):
         "deltaphi": [None, None]
         }
 
-
-#Unpack the dataSet to get the columns
-def unpack_dataSet(dataSet, type):
-    if type == "values":
-        return dataSet["freq"][0], dataSet["vin"][0], dataSet["vout"][0], dataSet["deltat"][0]
-    elif type == "errors":
-        return dataSet["freq"][1], dataSet["vin"][1], dataSet["vout"][1], dataSet["deltat"][1]
+#Unpack the raw dataSet to get the columns
+def unpack_dataSet(dataSet, errorType, dataType):
+    if errorType == "values":
+        if dataType == "raw":
+            return dataSet["freq"][0], dataSet["vin"][0], dataSet["vout"][0], dataSet["deltat"][0]
+        elif dataType == "calculated":
+            return dataSet["module"][0], dataSet["deltaphi"][0]
+    elif errorType == "errors":
+        if dataType == "raw":
+            return dataSet["freq"][1], dataSet["vin"][1], dataSet["vout"][1], dataSet["deltat"][1]
+        elif dataType == "calculated":
+            return dataSet["module"][1], dataSet["deltaphi"][1]
     else:
         return 0
 
 #Calculate values for plotting the bode diagram
-def BodeCalculations(dataSet):
+def calc_dataSet(dataSet):
 
     #get the data from the dataSet
-    freq, vin, vout, deltat = unpack_dataSet(dataSet, "values")
-
-    #scalate the data (measurement-unit-wise)
-    freq = freq*10**3
-    deltat = deltat[0]*(10**-6)  #us
+    freq, vin, vout, deltat = unpack_dataSet(dataSet, "values", "raw")
 
     #calculate the uncertainty on the acquired data based on the specs from the oscilloscope
     sigma_freq = freq*oscilloscope_error
@@ -95,35 +96,38 @@ def BodeCalculations(dataSet):
     dataSet["deltaphi"][0] = delta_phi
     dataSet["deltaphi"][1] = sigma_deltaphi
 
-#Plot the bode diagram from a dataset
-def Bode(dataSet):
-    
-    
-    if(mode != "nograph"):
-        plt.figure(LabSS.CreateFigure())
-        plt.xscale("log")
-        plt.scatter(freq[0]*10**3,20*np.log(module), label="Dati raccolti")
-        plt.axhline(-3, color="red", label="-3dB")
-        plt.axvline(1008.88, label="$\\nu_C$ teorica", color="green")
-        plt.legend()
-        plt.xlabel("$\\nu$ (Hz)")
-        plt.ylabel("Attenuazione (dB)")
-        plt.grid()
-        plt.title("Diagramma di Bode, Funzione di trasferimento")
-        
-        plt.figure(LabSS.CreateFigure())
-        plt.xscale("log")
-        plt.scatter(freq_act, delta_phi, label="Dati raccolti")
-        plt.xlabel("$\\nu$ (Hz)")
-        plt.grid()
-        plt.axhline(-45, label="- 45°", color="red")
-        plt.axvline(1008.88, label="$\\nu_C$ teorica", color="green")
-        plt.ylabel("Sfasamento (Deg)")
-        plt.legend()
-        plt.title("Diagramma di Bode, fase")
-    
-    return module, sigma_module, delta_phi, sigma_deltaphi
+    return dataSet
 
+#Plot the bode diagram from a dataset
+def PlotBode(dataSet):
+
+    #unpack data values
+    freq, vin, vout, deltat = unpack_dataSet(dataSet, "values", "raw")
+    module, deltaphi = unpack_dataSet(dataSet, "values", "calculated")
+
+    plt.figure(CreateFigure())
+    plt.xscale("log")
+    plt.scatter(freq,20*np.log(module), label="Dati raccolti")
+    plt.axhline(-3, color="red", label="-3dB")
+    plt.axvline(1008.88, label="$\\nu_C$ teorica", color="green")
+    plt.legend()
+    plt.xlabel("$\\nu$ (Hz)")
+    plt.ylabel("Attenuazione (dB)")
+    plt.grid()
+    plt.title("Diagramma di Bode, Funzione di trasferimento")
+        
+    plt.figure(CreateFigure())
+    plt.xscale("log")
+    plt.scatter(freq, deltaphi, label="Dati raccolti")
+    plt.xlabel("$\\nu$ (Hz)")
+    plt.grid()
+    plt.axhline(-45, label="- 45°", color="red")
+    plt.axvline(1008.88, label="$\\nu_C$ teorica", color="green")
+    plt.ylabel("Sfasamento (Deg)")
+    plt.legend()
+    plt.title("Diagramma di Bode, fase")
+
+    plt.show()
 
 ##########################################################
 #Useful functions for plotting with matplotlib
