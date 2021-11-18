@@ -4,13 +4,14 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>1c68c9d6-738b-4583-ac77-f1be901988df</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>PhysicsFramework.py</StartupFile>
+    <StartupFile>esp5_2.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
     <OutputPath>.</OutputPath>
     <Name>PhysicsFramework</Name>
     <RootNamespace>PhysicsFramework</RootNamespace>
+    <InterpreterId>Global|VisualStudio|Physics (Python 3.7 (64-bit))</InterpreterId>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
     <DebugSymbols>true</DebugSymbols>
@@ -21,7 +22,12 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="PhysicsFramework.py" />
+    <Compile Include="esp5_2.py" />
+    <Compile Include="Esperienza5.py" />
+    <Compile Include="LabSS.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <InterpreterReference Include="Global|VisualStudio|Physics (Python 3.7 (64-bit))" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
   <!-- Uncomment the CoreCompile target to enable the Build command in
