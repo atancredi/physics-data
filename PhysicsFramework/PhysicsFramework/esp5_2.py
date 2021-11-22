@@ -186,6 +186,7 @@ def dataFrame(freq,v_in,v_out,delta_t):
         
         return df2
 
+
 #df1 = dataFrame(freq1,vin1,vout1,deltat1)
 #print(df1.to_latex(index=False).replace("rrrrrr","|c|c|c|c|c|c|").replace("@@@","\pm").replace("§§§","$"))
 

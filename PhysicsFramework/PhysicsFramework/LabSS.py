@@ -1,5 +1,6 @@
 #Script that makes lab reports for Lab Segnali e Sistemi way easier
 
+
 import pandas as pd
 import numpy as np
 
@@ -10,15 +11,17 @@ mpl.rcParams['figure.dpi'] = 100
 
 
 #from scipy.optimize import curve_fit
-
 #from mpl_toolkits.axes_grid1.inset_locator import zoomed_inset_axes
 #from mpl_toolkits.axes_grid1.inset_locator import mark_inset
 #import matplotlib.ticker as mticker
 
+
 ##########################################################
 #Configuration
 
+
 oscilloscope_error = 0.03 #uncertainty when reading the oscilloscope
+
 
 ##########################################################
 #Core program
