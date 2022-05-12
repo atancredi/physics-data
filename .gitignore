@@ -443,3 +443,5 @@ Physics/share/jupyter/labextensions/@jupyter-widgets/jupyterlab-manager/install.
 Physics/share/jupyter/labextensions/@jupyter-widgets/jupyterlab-manager/package.json
 startNotebook.bat
 ML_AI_2022/ImageFiltering/DataSet/mano.jpg
+ML_AI_2022/es8/Dataset/.DS_Store
+ML_AI_2022/*/*/*/*.JPG
