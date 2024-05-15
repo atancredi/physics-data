@@ -1,0 +1,82 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage[hidelinks]{hyperref}
+\usepackage{physics}
+\usepackage{array}
+\usepackage{float}
+\usepackage{cancel}
+\usepackage{amsfonts}
+\usepackage[italian]{babel}
+\usepackage{mathrsfs}
+\usepackage{mathtools}
+\usepackage{yhmath}
+\usepackage{amsthm}
+\usepackage{caption}
+\usepackage[rightcaption]{sidecap}
+\usepackage{graphicx}
+\usepackage{subfig}
+\usepackage{lmodern}
+\usepackage{bigints}
+\usepackage{pgfplots}
+\usepackage{bm}
+\usepackage{textcomp}
+\usepackage{siunitx}
+\usepackage[a4paper, margin=0.8in]{geometry}
+\usepackage{multirow}
+\usepackage[utf8]{inputenc}
+\usepackage{siunitx}
+\usepackage{amsmath}
+\pgfplotsset{compat=1.6}
+\usepackage{unicode-math}
+\usepackage{mathtools}
+
+\author{Alessandro Tancredi}
+\title{Carne}
+\begin{document}
+\date{20 Aprile 1420}
+\maketitle
+
+\section{Introduzione}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=1]{carne.jpeg}
+    \caption{Carne}
+    \label{fig:aaa}
+\end{figure}
+
+\begin{table}[!h]
+\caption{TabellaProva}
+\begin{center}
+\label{tab:codifica}
+\begin{tabular}{||c|cc|cccc||cc||}
+\hline
+$En$ & $Q_1$ & $Q_0$ & Stato & V & G & R \\
+\hline
+1&0     & 0     & Verde & 1 & 0 & 0   \\
+1&1     & 0     & V+G   & 1 & 1 & 0    \\
+1&0     & 1     & Rosso & 0 & 0 & 1    \\
+0 &0     & 0     & Spento & 0 & 0 & 0    \\
+0 &1     & 0     & Giallo & 0 & 1 & 0 \\
+\hline
+\end{tabular}
+\end{center}
+\end{table}
+
+\begin{table}[htbp]
+    \centering
+    \begin{tabular}{||c|c|c||}
+    \hline
+    Name & Age & Gender \\
+    John & 30 & Male \\
+    Alice & 25 & Female \\
+    Bob & 35 & Male \\
+    \hline
+    \end{tabular}
+    \caption{Insert caption here.}
+    \label{tab:my_table}
+    \end{table}
+
+\end{document}
