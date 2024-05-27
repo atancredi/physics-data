@@ -3,7 +3,7 @@ Collection of stuff to help with physics data.
 
 
 
-## [lab3](/lab3)
+## [Laboratorio di Fisica 3](/lab3)
 - ### Guide
     - [Checklist Esercitazioni](/lab3/componenti/Checklist%20Esercitazioni.pdf)
 - ### Datasheet
@@ -15,7 +15,7 @@ Collection of stuff to help with physics data.
 - ### Esercitazioni
     - 
 
-## [curve_fitting](/curve_fitting)
+## [Fit](/curve_fitting)
 - ### [Guida Pratica](/curve_fitting/curve_fitting_how_to.ipynb)
 
 
