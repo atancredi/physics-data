@@ -52,6 +52,9 @@ $$\frac{\Delta G}{G_0}=|n\frac{\Delta a}{a_0}|+|m\frac{\Delta b}{b_0}|+|p\frac{\
 Da questa formula si deduce che è inutile cercare di ridurre l’errore relativo su una delle grandezze nel caso in cui esso sia già molto più piccolo degli errori relativi sulle altre (questi ultimi domineranno comunque sull’errore complessivo).
 
 ## Cifre significative e convenzioni di scrittura
+
+Per il best value della misura bisogna troncare all'ultima potenza di 10 dell'errore (per eccesso o per difetto).
+
 - La cifra più significativa è quella più a sinistra diversa da zero.  
 - La cifra meno significativa è quella più a destra.  
 - Tutte le cifre comprese fra la più e la meno significativa sono cifre significative.
@@ -59,6 +62,15 @@ Da questa formula si deduce che è inutile cercare di ridurre l’errore relati
 Se non c’è la virgola decimale la cifra meno significativa è quella più a destra diversa da zero. In questo caso il numero $10$ ha solo una cifra significativa. Se lo volessi riportare con due cifre significative dovrei scrivere $10.0$
 
 **in generale si riportano tutte le cifre fino alla prima influenzata dall’errore inclusa**, soprattutto se si propagano gli errori tramite l'errore massimo (casi scritti in precedenza). Se invece si usano metodi più sofisticati per trattare gli errori si usa scrivere la misura fino alla seconda cifra affetta da errore e quindi l'errore con due cifre significative.
+
+In altre parole la convenzione per le cifre significative di errore è **non più di una**. Questo a meno che rimuovere l'ultima cifra significativa non introduca una discrepanza sull'errore relativo maggiore del $20\%$.
+
+$$10.0 \pm 5.2 \rightarrow 10.0 \pm 5$$
+Questo va bene perchè introduco una discrepanza minore del 20% sull'errore relativo. Invece quest'altro caso non va bene:
+$$10.0 \pm 1.4$$
+Se levassi il $.4$ introdurrei una discrepanza maggiore del 20% sull'errore relativo.
+
+
 ### Esempi
 Indicando con una sottolineatura la cifra meno significativa, e con una sopralineatura la cifra più significativa, si ha:
 $$\bar{3}11\underline{5} $$ 
@@ -71,6 +83,9 @@ $$\bar{3}0.03\underline{0} $$
 
 $(500.42\pm32.5)$ -> **SBAGLIATO**
 $(500.42 \pm 30)$ -> **CORRETTO**
+
+#### ASSOLUTAMENTE NO
+$$1.257 \pm 0.324$$
 
 ##### Errore massimo nel prodotto arrotondando
 Considero due quantità che, in qualche unità di misura, valgono:

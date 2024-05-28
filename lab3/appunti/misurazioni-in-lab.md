@@ -5,8 +5,11 @@ per misure tanto rumorose si considera come errore la differenza tra ycursor sop
 waveforms measurements ampiezza: errore \pm 10mV +\p 0.5%
 - risoluzione ADC:
 	incertezza casuale, calcolata come $0.3\ mV$ per fondo scala minore o uguale di $0.5\ V/div$ o $3\ mV$ per fondo scala maggiore o uguale di $1\ V/div$.
-- utilizzo dei cursori: incertezza casuale
-	circa $0.1\ div / \sqrt{12} \approx 3\% \ \text{divisione} = 0.3\%\ \text{scala}$	  
+- utilizzo dei cursori: 
+	Regolare i cursori equivale ad utilizzare una scala graduata: posso assumere che la lettura si collochi all'interno di quella divisione in maniera equiprobabile (incertezza casuale).
+	Per un fondo scala di $\text{n V/div}$, essendoci 10 "tacchette" in una divisione devo dividere $n$ per $10$ e dividere il valore trovato per $\sqrt{12}$, ovvero la radice della varianza della distribuzione piatta.
+
+	Sarebbero circa $0.1\ div / \sqrt{12} \approx 3\% \ \text{divisione} = 0.3\%\ \text{scala}$	  
 - la presenza di rumore nel circuito introduce incertezza casuale risultante dallo spessore della traccia oscillografica (eliminabile prendendo la media)
 - calibrazione relativa DAC ADC: incertezza sistematica relativa
 	$rms = 0.2\ \%\ ,\ max = 0.5\ \%$
@@ -29,10 +32,11 @@ Con 5V di range (come in figura) l'errore dovrebbe essere 20mV
 (grossolana, potenzialità dello strumento non sfruttata)
 
 ## Misure di tensione/resistenza col multimetro
-<img src="media/mis01.png" width="50%"/>
+<img src="media/mis01.png" width="70%"/>
 
 per le resistenze 0.8% + n digit
-su resistenza da 10k e' 80ohm
+
+Per una resistenza da 10k e' 80ohm
 
 
 Da data-sheet, l'incertezza è quotata come 0.8% lettura + 2 digits
@@ -52,13 +56,13 @@ una sovrastima delle incertezze)
 
 
 ## Misure di tempo/frequenza con AD2
-<img src="media/mis02.png" width="50%"/>
+<img src="media/mis02.png" width="70%"/>
 
 ## Propagazione degli errori
-<img src="media/mis03.png" width="50%"/>
+<img src="media/mis03.png" width="70%"/>
 
 ## Convenzione sulle cifre significative
-<img src="media/mis04.png" width="50%"/>
+<img src="media/mis04.png" width="70%"/>
 
 # chi quadro
 chi quadro / gradi di libertà
@@ -76,7 +80,7 @@ Il fit è soddisfacente se:
 - χ2/ndof ~ 1 (se minore/maggiore possibile sovrastima/sottostima degli errori)
 - i residui normalizzati sono distribuiti casualmente intorno a 0
 
-<img src="media/mis05.png" width="50%"/>
+<img src="media/mis05.png" width="70%"/>
 
 
 # FIT
@@ -95,3 +99,5 @@ sulla pendenza sul coefficiente angolare della retta di best-fit
 - Non usate MAI l'opzione "absolute_sigma = False" che modifica gli errori
 scalandoli a posteriori (si tratta di una maniera surrettizia di mettere la polvere
 sotto il tappeto...), perché poi il χ2 non è più coerente con il plot dei residui...
+
+In particolare bisogna fare i fit con absolute_sigma=True, senza includere gli errori sistematici, che vanno poi inclusi nel valor medio dopo il fit.
