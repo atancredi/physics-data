@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+
+<html lang="it" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        //Find the lenght of an ARRAY
+        function lenght(array) {
+            var len = 0;
+            array.forEach(function (item) {
+                len++;
+            })
+            return len
+        }
+
+        //Format a string
+        function format(stringa, array_parametri) {
+            var counter = 0;
+            var stringa_out = stringa;
+
+            array_parametri.forEach(function (item) {
+                if (typeof (item) == "string") {
+                    var expr = "{" + counter + "}";
+                    if (stringa.includes(expr)) {
+                        stringa_out = stringa_out.replaceAll(expr, item);
+                        
+                    } else {
+                        return "errore";
+                    }
+                } else {
+                    return "errore";
+                }
+
+                counter++;
+            });
+
+            return stringa_out;
+
+        }
+    </script>
+
+    <script>
+
+        nFields = 0;
+
+        //code for the single input cell
+        var singleInputCell = '<input type="number" class="DataCols DataCol{0}" />';
+
+        //code for the row
+        function GenerateRow(nFields, nRow) {
+            var line = '<div class="DataRows DataRow{0}">';
+            for (var i = 0; i < nFields; i++) {
+                line += format(singleInputCell, [i + ""])
+            }
+            line += "</div>";
+            return format(line, [nRow + ""]);
+        }
+
+        function DataSubmit(){
+
+            //get the rows
+            var rows = $(".DataRows");
+            console.log(rows.size(),nFields);
+            for (var i = 0; i < lenght(rows); i++) {
+
+            }
+
+        }
+
+    </script>
+
+    <!-- Data Styles -->
+    <style>
+        .DataCols{
+
+        }
+
+        .DataRows{
+
+        }
+
+    </style>
+
+</head>
+<body>
+
+    <div id="DataIn">
+
+        <div class="GridGen">
+            <input type="number" id="num_fields" />
+            <button id="go_num_fields">Generate Grid</button>
+        </div>
+
+        <div id="fields"></div>
+
+    </div>
+
+    <script>
+
+        $("#go_num_fields").on("click", function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            $(".GridGen").hide();
+
+            nFields = $("#num_fields").val();
+
+            if (nFields > 0) {
+                //generate the grid
+                for (var i = 0; i < nFields; i++) {
+                    console.log("append")
+                    $("#fields").append(GenerateRow(nFields,i))
+                }
+
+                //append the submit button
+                $("#fields").append('<button class="DataSubmit" onclick="DataSubmit();">Submit</button>');
+
+            }
+
+        })
+    </script>
+
+</body>
+</html>
